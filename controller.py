@@ -1,5 +1,5 @@
-from palavra import *
-from lista import List
+from word import *
+from chained_list import List
 #from trie import *
 import time
 
@@ -19,10 +19,15 @@ class Controle:
         def __first_index_of(self, prefix):
             begin = 0
             pos = -1
+            for item in self.items:
+                if compare_by_prefix(item.text, prefix) == 0:
+                    pos = begin
+                    break
+                begin += 1
             return pos
 
         def __last_index_of(self, prefix):
-            inicio = self.__first_index_of(prefix)
+            start = self.__first_index_of(prefix)
             return pos
 
         def load_list(self, filename):
