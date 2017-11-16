@@ -15,6 +15,8 @@ class Word:
 
 
 def compare_by_prefix(word, prefix):
+    word = word.lower()
+    prefix = prefix.lower()
     prefix_size = len(prefix)
     if prefix < word[:prefix_size]:
         return 1

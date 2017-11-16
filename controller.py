@@ -28,6 +28,12 @@ class Controle:
 
         def __last_index_of(self, prefix):
             start = self.__first_index_of(prefix)
+            pos = start
+            if start != -1:
+                for item in self.items[start+1:]:
+                    if compare_by_prefix(item.text, prefix) == 1:
+                        break
+                    pos += 1
             return pos
 
         def load_list(self, filename):
