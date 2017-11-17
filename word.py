@@ -15,12 +15,12 @@ class Word:
 
 
 def compare_by_prefix(word, prefix):
-    word = word.lower()
+    word.text = word.text.lower()
     prefix = prefix.lower()
     prefix_size = len(prefix)
-    if prefix < word[:prefix_size]:
+    if prefix < word.text[:prefix_size]:
         return 1
-    if prefix > word[:prefix_size]:
+    if prefix > word.text[:prefix_size]:
         return -1
     return 0
 
