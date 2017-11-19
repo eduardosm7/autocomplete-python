@@ -53,7 +53,7 @@ class Controller:
             end = self.__last_index_of(prefix)
             chained_list = List()
             for word in self.items[begin:end+1]:
-                chained_list.insert_ordered(word, compare_by_weight)
+                chained_list.insert_ordered(word, compare_by_weight, True)
             for i in range(chained_list.get_size()-quantity):
                 chained_list.remove_end()
             return chained_list

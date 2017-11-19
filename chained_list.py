@@ -1,6 +1,3 @@
-from word import Word
-
-
 class Node:
 
     def __init__(self, item=None, prev=None, nex=None):
@@ -18,14 +15,21 @@ class List:
     def get_size(self):
         return self.size
 
-    def insert_ordered(self, item, cmp):
+    def insert_ordered(self, item, cmp, rev=False):
         if self.get_size() == 0:
             self.first.nex = Node(item, self.first, self.last)
             self.last.prev = self.first.nex
             self.size += 1
-        else:
+        elif rev == False:
             aux = self.first.nex
             while aux != self.last and cmp(item, aux.item) > 0:
+                aux = aux.nex
+            aux.prev.nex = Node(item, aux.prev, aux)
+            aux.prev = aux.prev.nex
+            self.size += 1
+        else:
+            aux = self.first.nex
+            while aux != self.last and cmp(item, aux.item) < 0:
                 aux = aux.nex
             aux.prev.nex = Node(item, aux.prev, aux)
             aux.prev = aux.prev.nex

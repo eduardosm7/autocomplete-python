@@ -2,7 +2,7 @@ class Word:
 
     def __init__(self, text="", weight=-1):
         self.text = text
-        self.weight = weight
+        self.weight = int(weight)
 
     def __lt__(self, other):
         return self.text < other.text
@@ -15,12 +15,12 @@ class Word:
 
 
 def compare_by_prefix(word, prefix):
-    word.text = word.text.lower()
-    prefix = prefix.lower()
+    word_aux = word.text.lower()
+    prefix_aux = prefix.lower()
     prefix_size = len(prefix)
-    if prefix < word.text[:prefix_size]:
+    if prefix_aux < word_aux[:prefix_size]:
         return 1
-    if prefix > word.text[:prefix_size]:
+    if prefix_aux > word_aux[:prefix_size]:
         return -1
     return 0
 
