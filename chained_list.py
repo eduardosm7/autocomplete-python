@@ -20,17 +20,14 @@ class List:
             self.first.nex = Node(item, self.first, self.last)
             self.last.prev = self.first.nex
             self.size += 1
-        elif rev == False:
-            aux = self.first.nex
-            while aux != self.last and cmp(item, aux.item) > 0:
-                aux = aux.nex
-            aux.prev.nex = Node(item, aux.prev, aux)
-            aux.prev = aux.prev.nex
-            self.size += 1
         else:
             aux = self.first.nex
-            while aux != self.last and cmp(item, aux.item) < 0:
-                aux = aux.nex
+            if rev:
+                while aux != self.last and cmp(item, aux.item) < 0:
+                    aux = aux.nex
+            else:
+                while aux != self.last and cmp(item, aux.item) > 0:
+                    aux = aux.nex
             aux.prev.nex = Node(item, aux.prev, aux)
             aux.prev = aux.prev.nex
             self.size += 1
