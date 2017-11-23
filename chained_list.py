@@ -23,10 +23,10 @@ class List:
         else:
             aux = self.first.nex
             if rev:
-                while aux != self.last and cmp(item, aux.item) < 0:
+                while aux != self.last and cmp(item, aux.item) <= 0:
                     aux = aux.nex
             else:
-                while aux != self.last and cmp(item, aux.item) > 0:
+                while aux != self.last and cmp(item, aux.item) >= 0:
                     aux = aux.nex
             aux.prev.nex = Node(item, aux.prev, aux)
             aux.prev = aux.prev.nex
@@ -41,7 +41,7 @@ class List:
     def __str__(self):
         result = ""
         aux = self.first.nex
-        while aux != self.last:
+        while aux != self.last and aux is not None:
             result += str(aux.item) + '\n'
             aux = aux.nex
         return result

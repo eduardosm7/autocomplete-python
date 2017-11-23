@@ -1,6 +1,6 @@
 from word import *
 from chained_list import List
-#from trie import *
+from trie import *
 import time
 
 
@@ -45,7 +45,7 @@ class Controller:
                 tmp = line.strip("\n ").split("\t")
                 item = Word(tmp[1], tmp[0])
                 self.items.append(item)
-            self.items.sort()
+            self.items.sort(key=lambda s: s.text.lower())
             self.data_loaded = True
 
         def find_list(self, prefix, quantity):
