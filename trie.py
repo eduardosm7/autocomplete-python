@@ -23,10 +23,10 @@ class Trie:
     def insert(self, word):
         pass
 
-    def __percorrer(self, node, prefix, x="", y=0):
+    def __traverse(self, node, prefix, x="", y=0):
         pass
 
-    def percorrer(self, prefix):
+    def traverse(self, prefix):
         pass
 
     def search(self, prefix):
