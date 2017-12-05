@@ -1,6 +1,6 @@
 from word import *
 from chained_list import List
-from trie import *
+from tst import *
 import time
 
 
@@ -58,7 +58,7 @@ class Controller:
                 chained_list.remove_end()
             return chained_list
 
-        def find_trie(self, prefix, quantity):
+        def find_tst(self, prefix, quantity):
             pass
 
         def get_time(self):

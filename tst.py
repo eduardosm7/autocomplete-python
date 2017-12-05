@@ -10,7 +10,7 @@ class Node:
         self.right = right
 
 
-class Trie:
+class TST:
     def __init__(self):
         self.root = Node()
         self.leaf = None
@@ -32,7 +32,7 @@ class Trie:
             if len(tail) == 0:
                 node.value = value
             else:
-                node.mid = self.__insert(node.mid, tail)
+                node.mid = self.__insert(node.mid, tail, value)
 
     def insert(self, word):
         self.__insert(self.root, word.text, word.weight)
