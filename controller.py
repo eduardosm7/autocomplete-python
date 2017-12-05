@@ -59,7 +59,12 @@ class Controller:
             return chained_list
 
         def find_tst(self, prefix, quantity):
-            pass
+            begin = self.__first_index_of(prefix)
+            end = self.__last_index_of(prefix)
+            tst = TST()
+            for word in self.items[begin:end + 1]:
+                tst.insert(word)
+            return tst.traverse()
 
         def get_time(self):
             pass

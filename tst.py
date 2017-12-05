@@ -13,17 +13,17 @@ class Node:
 class TST:
     def __init__(self):
         self.root = Node()
-        self.leaf = None
-        self.size = 0
         self.final_list = []
 
     def __insert(self, node, string, value):
-        if len(string):
+        if len(string) == 0:
             return node
         head = string[0]
         tail = string[1:]
         if node is None:
-            node = Node(head, value)
+            node = Node(head, None)
+        if node.item is None:
+            node.item = head
         if head < node.item:
             node.left = self.__insert(node.left, string, value)
         elif head > node.item:
@@ -33,16 +33,29 @@ class TST:
                 node.value = value
             else:
                 node.mid = self.__insert(node.mid, tail, value)
+        return node
 
     def insert(self, word):
         self.__insert(self.root, word.text, word.weight)
 
-    def __traverse(self, node, prefix, x="", y=0):
-        pass
+    # Adapted from https://gist.github.com/skylarker/f98c6c297ecc9a366836
+    def __traverse(self, node):
+        if node:
+            for c in self.__traverse(node.left):
+                yield c
+            if node.value is not None:
+                yield [node.item]
+            else:
+                for c in self.__traverse(node.mid):
+                    yield [node.item] + c
+            for c in self.__traverse(node.right):
+                yield c
 
     def traverse(self):
-        pass
+        for w in self.__traverse(self.root):
+            print(''.join(w))
 
+    ######
     def search(self, prefix):
         pass
 
